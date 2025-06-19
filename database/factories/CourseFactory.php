@@ -16,10 +16,12 @@ class CourseFactory extends Factory
      */
     public function definition(): array
     {
-       return [
-        'subject'=>fake()->firstName(),
-        'course_code'=>fake()->lastName(),
-        'credits'=>fake()->safeEmail(),
+      $subject = fake()->randomElement(array:['Web Programming','Physics','Data Structures and Algorithms','Probability and Statistics']);
+       
+      return [
+        'subject'=>$subject,
+        'course_code'=>strtoupper(fake()->bothify('CS###')),
+        'credits'=>fake()->numberBetween(1,5),
          'description'=>fake()->sentence(10),
        ];
     }
