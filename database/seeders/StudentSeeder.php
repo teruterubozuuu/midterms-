@@ -15,12 +15,13 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $course = Course::factory()->create(); 
-        Student::factory(5)->create([
-             "user_id" => User::factory(),
-             "course_id" => $course->id,
-        ]
-            
-        );
+        $user = User::factory()->create();
+        $course = Course::factory()->create();
+        Student::factory()
+            ->count(5)
+            ->create([
+                'user_id' => $user->id,
+                'course_id' => $course->id,
+            ]);
     }
 }

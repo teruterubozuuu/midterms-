@@ -14,8 +14,12 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
+        
+         $user = User::factory()->create();
+       
          Teacher::factory(5)->create([
-            "user_id" => User::factory(),
-         ]);
+                 'user_id' => $user->id,
+            ]);
+       
     }
 }
